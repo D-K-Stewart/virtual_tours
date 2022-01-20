@@ -1,0 +1,80 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.1.1/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-F3w7mX95PdgyTmZZMECAngseQB83DfGTowi0iMjiWaeVhAn4FJkqJByhZMI3AhiU" crossorigin="anonymous">
+    <link rel="stylesheet" href="{{url_for('static',filename='css/style.css')}}">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+
+    
+    <title>Document</title>
+</head>
+<body>
+    <nav class="navbar navbar-expand-lg fixed-top navbar-light bg-light">
+        <div class="container-fluid">
+            <!-- <div class="text-align:center">
+            <img class="logo2" src="https://e360imaging1.s3.us-west-2.amazonaws.com/davidstewartportfolio/wwvt-1.png" alt="">
+            </div> -->
+    
+            <button
+                class="navbar-toggler"
+                type="button"
+                data-mdb-toggle="collapse"
+                data-mdb-target="#navbarNavAltMarkup"
+                aria-controls="navbarNavAltMarkup"
+                aria-expanded="false"
+                aria-label="Toggle navigation">
+                <i class="fas fa-bars"></i>
+            </button>
+            <div class="collapse navbar-collapse" id="navbarNavAltMarkup">
+                <div class="navbar-nav">
+                    <div style="display: flex;">
+                        <a class="nav-link active" aria-current="page" href="/dashboard">Home</a>
+                        <a class="nav-link" href="#">Features</a>
+                        <a class="nav-link" href="/new">Add New Tour</a>
+                    </div>
+                    <div style="margin-left: 100px;margin-top: 5px;">
+                        <input type="search" id="site-search" name="q" aria-label="Search through site content">
+                        <button style="margin-left: 12px;text-decoration: none;border:none;" type="seach">Search</button>
+                    </div>
+                </div>
+            </div>
+            
+            <div style="display:flex;margin-left: 2px;">
+                <a rel="noopener noreferrer" target="_blank" href="https://www.facebook.com"><img style="height: 30px;margin-left: 2px;" src="https://e360imaging1.s3.us-west-2.amazonaws.com/davidstewartportfolio/facebook.png" alt=""></a>
+                <a rel="noopener noreferrer" target="_blank" href="https://twitter.com"><img style="height: 30px;margin-left: 2px;" src="https://e360imaging1.s3.us-west-2.amazonaws.com/davidstewartportfolio/twitter.png" alt=""></a>
+                <a rel="noopener noreferrer" target="_blank" href="https://www.instagram.com"><img style="height: 30px;margin-left: 2px;" src="https://e360imaging1.s3.us-west-2.amazonaws.com/davidstewartportfolio/instagram.png" alt=""></a>
+                <a rel="noopener noreferrer" target="_blank" href="https://www.linkedin.com/home"><img style="height: 30px;margin-left: 2px;" src="https://e360imaging1.s3.us-west-2.amazonaws.com/davidstewartportfolio/linkedin.png" alt=""></a>
+                <a rel="noopener noreferrer" target="_blank" href="https://github.com"><img style="height: 30px;margin-left: 2px;" src="https://e360imaging1.s3.us-west-2.amazonaws.com/davidstewartportfolio/GitHub-Mark.png" alt=""></a>
+                <form action="/dashboard"><button style="background-color: #04245f;color:whitesmoke" action='/new' type="submit" class="topbtn">Tours</button></form>
+                <form action="/logout"><button style="background-color: #04245f;color:whitesmoke" action='/logout' type="submit" class="topbtn">Logout</button></form>
+            </div>
+            
+        </div>
+    </nav>
+    <div style="margin-top:100px;">  
+    </div>
+        <div Style="padding-top:40px; border:1px solid black;border-radius: 5%;" class="box3 header">
+            <div>
+                <p>{{ tour_name }}</p>
+            </div>
+            <div style="margin-left:20px;">
+                <p><strong>Name:</strong><p style="text-decoration: underline;">{{ tour.name }}</p>
+                <p><strong>Location:</strong><p style="text-decoration: underline">{{ tour.location }}</p>
+                <p><strong>Date:</strong><p style="text-decoration: underline">{{tour.date}}</p>
+                <p><strong>Description:</strong><p>{{ tour.description}}</p>
+                <p><strong>Link:</strong><p style="text-decoration: underline"><a rel="noopener noreferrer" target="_blank" href="{{tour.link}}">{{tour.link}}</a></p>
+                
+                <br>
+                <p>Reported By: {{ tour.creator.fullname }}</p>
+            </div>
+            <form action="/edit/{{tour.id}}"><button type="submit" class="btmbtn">Edit</button></form>
+
+        </div>
+        
+<script type="text/javascript" src="{{ url_for('static', filename='js/script.js') }}"></script>
+
+</body>
+</html>
